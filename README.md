@@ -7,6 +7,8 @@
 [![Platform](https://img.shields.io/badge/Platform-Linux%20(X11)-green.svg)]()
 [![RAM Usage](https://img.shields.io/badge/Daemon%20RAM-~250%20KB-brightgreen.svg)]()
 
+> 💡 **New to Linux?** Check out our friendly [Beginner's Step-by-Step Guide](BEGINNERS_GUIDE.md) for screenshots, keyboard shortcut setup, and simple instructions!
+
 ---
 
 ## The Problem
@@ -39,22 +41,21 @@ On Windows, the dedicated app doesn't actually quit when clicking `X`; it minimi
 Ensure you have Rust and standard X11 utilities installed:
 
 ```bash
-# Ubuntu / Debian / Linux Mint
-sudo apt install cargo xdotool wmctrl x11-utils
+# Ubuntu / Debian / Linux Mint / Pop!_OS
+sudo apt update && sudo apt install -y cargo xdotool wmctrl x11-utils
 
 # Fedora
-sudo dnf install cargo xdotool wmctrl xwininfo
+sudo dnf install -y cargo xdotool wmctrl xwininfo
 
 # Arch / EndeavourOS
-sudo pacman -S rust xdotool wmctrl xorg-xwininfo
+sudo pacman -S --noconfirm rust xdotool wmctrl xorg-xwininfo
 ```
 
 ### Quick Install
 
 ```bash
-git clone https://github.com/<your-username>/whatsapp-linux-daemon.git
-cd whatsapp-linux-daemon
-chmod +x install.sh
+git clone https://github.com/Sakib669/whatsapp-notify-linux-.git
+cd whatsapp-notify-linux-
 ./install.sh
 ```
 
@@ -100,9 +101,15 @@ You can bind a global hotkey (like <kbd>Super</kbd> + <kbd>W</kbd>) to toggle Wh
 ## Uninstall
 
 ```bash
-cd whatsapp-linux-daemon
+cd whatsapp-notify-linux-
 ./uninstall.sh
 ```
+
+---
+
+## Documentation
+
+- [Beginner's Step-by-Step Guide](BEGINNERS_GUIDE.md)
 
 ---
 
