@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# WhatsApp URL handler & Desktop toggle using lightweight Rust whatsapp-daemon
+URL="$1"
+
+# Detect browser
+BROWSER_BIN=""
+for b in /usr/bin/brave-browser /usr/bin/brave-browser-stable /usr/bin/google-chrome /usr/bin/google-chrome-stable /usr/bin/chromium-browser /usr/bin/chromium /usr/bin/thorium-browser; do
+    if [ -x "$b" ]; then
+        BROWSER_BIN="$b"
+        break
+    fi
+done
+
+if [ -z "$BROWSER_BIN" ]; then
+    BROWSER_BIN="brave-browser"
+fi
+
+DAEMON_BIN="$HOME/.local/bin/whatsapp-daemon"
+if [ ! -x "$DAEMON_BIN" ]; then
+    DAEMON_BIN="whatsapp-daemon"
+fi
+
+if [ -z "$URL" ]; then
+    exec "$DAEMON_BIN" toggle
+fi
+
+# Convert whatsapp://send?phone=...&text=... to https://web.whatsapp.com/send?...
+if [[ "$URL" =~ ^whatsapp://send/?\?(.*) ]]; then
+    PARAMS="${BASH_REMATCH[1]}"
+    "$DAEMON_BIN" show
+    exec "$BROWSER_BIN" --app="https://web.whatsapp.com/send?${PARAMS}"
+elif [[ "$URL" =~ ^whatsapp://send(.*) ]]; then
+    "$DAEMON_BIN" show
+    exec "$BROWSER_BIN" --app="https://web.whatsapp.com/send"
+elif [[ "$URL" =~ ^whatsapp://(.*) ]]; then
+    REST="${BASH_REMATCH[1]}"
+    "$DAEMON_BIN" show
+    exec "$BROWSER_BIN" --app="https://web.whatsapp.com/${REST}"
+else
+    exec "$DAEMON_BIN" show
+fi

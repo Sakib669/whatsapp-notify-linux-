@@ -1,0 +1,13 @@
+[Unit]
+Description=WhatsApp Background Daemon (Real-Time Notifications)
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/whatsapp-daemon daemon --hidden
+Restart=always
+RestartSec=3
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target

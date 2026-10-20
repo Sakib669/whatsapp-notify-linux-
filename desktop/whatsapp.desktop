@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=WhatsApp
+GenericName=Messaging App
+Comment=Official WhatsApp Web Client with Background Notifications
+Exec=whatsapp-url-handler %u
+Icon=whatsapp
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;Chat;
+MimeType=x-scheme-handler/whatsapp;
+StartupWMClass=web.whatsapp.com
+StartupNotify=true

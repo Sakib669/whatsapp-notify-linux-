@@ -1,0 +1,9 @@
+[package]
+name = "whatsapp-daemon"
+version = "0.1.0"
+edition = "2021"
+authors = ["Sakib"]
+description = "A native, ultra-lightweight Rust daemon for real-time background WhatsApp notifications on Linux"
+license = "MIT"
+
+[dependencies]
